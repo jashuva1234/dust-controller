@@ -1,0 +1,29 @@
+SOURCE CODE:
+int measurePin=0;
+float voltsMeasured=0;
+float calcVoltage=0;
+float dustDensity=0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(8,OUTPUT);
+}
+
+void loop() {
+  voltsMeasured=analogRead(measurePin);
+  calcVoltage=voMeasured*(5.0/1024.0);
+  dustDensity=170*calcVoltage;
+  Serial.println(dustDensity);
+  delay(1000);
+  if(dustDensity>200.0)
+  {
+    digitalWrite(8, LOW);
+    Serial.println("Motor is ON");
+  }
+  else
+  {
+    digitalWrite(8, HIGH);
+    Serial.println("Motor is OFF");
+  }
+  delay(1000);
+}
